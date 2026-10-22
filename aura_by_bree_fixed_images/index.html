@@ -1,0 +1,440 @@
+<title>Aura by Bree</title>
+<meta content="cover" name="claude:viewport-fit-sides"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Jost:wght@300;400;500&amp;family=Pinyon+Script&amp;display=swap" rel="stylesheet"/>
+<style>
+/* Layout: a dark, film-like page. Hero is a title card with the photograph as a framed still that pushes in slowly.
+   A wide slogan band, ruled lists in place of cards, and an end-credits footer. Film grain sits on the background only. */
+:root {
+  --bg: #12071a;
+  --bg2: #1b0c26;
+  --cream: #f1e8da;
+  --muted: #bdadc8;
+  --gold: #c49a4a;
+  --gold-soft: #dcc08a;
+  --plum: #3b1749;
+  --rule: rgba(220, 192, 138, 0.28);
+  --display: "Cormorant Garamond", "Times New Roman", serif;
+  --script: "Pinyon Script", "Brush Script MT", cursive;
+  --body: "Jost", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  color: var(--cream);
+  font-family: var(--body);
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.7;
+}
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin-inline: auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.label { font-size: 0.76rem; letter-spacing: 0.34em; text-transform: uppercase; color: var(--gold-soft); font-weight: 400; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 600; margin: 0; color: var(--cream); text-wrap: balance; }
+h2 { font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.04; }
+section.block { padding-block: clamp(64px, 9vw, 120px); }
+section.alt { background-color: var(--bg2); }
+.head { display: grid; gap: 12px; margin-bottom: clamp(30px, 5vw, 56px); max-width: 40em; }
+.head p { margin: 0; color: var(--muted); }
+
+/* top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(18, 7, 26, 0.92); border-bottom: 1px solid var(--rule); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 30; }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.bar .mark { font-family: var(--script); font-size: 1.9rem; text-decoration: none; line-height: 1; }
+.bar nav { display: flex; gap: 28px; align-items: center; }
+.bar nav a { font-size: 0.76rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; color: var(--gold-soft); font-weight: 400; }
+.bar nav a:hover { color: #fff; }
+.bar nav a.book { border: 1px solid var(--gold); padding: 8px 16px; color: var(--cream); }
+.bar nav a.book:hover { background: var(--gold); color: #1b0a24; }
+@media (max-width: 700px) { .bar nav a.opt { display: none; } }
+
+/* buttons */
+.btn { display: inline-block; font: 500 0.78rem/1 var(--body); letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 17px 28px; border: 1px solid var(--gold); border-radius: 0; cursor: pointer; text-align: center; }
+.btn-solid { background: var(--gold); color: #1b0a24; }
+.btn-solid:hover { background: var(--cream); border-color: var(--cream); }
+.btn-ghost { color: var(--cream); }
+.btn-ghost:hover { background: var(--cream); color: #1b0a24; border-color: var(--cream); }
+.btn-small { padding: 12px 20px; font-size: 0.72rem; }
+
+/* hero: title card */
+.hero { background-color: var(--bg); background-image: radial-gradient(ellipse 60% 70% at 78% 55%, rgba(120, 60, 140, 0.35), transparent 70%); border-bottom: 1px solid var(--rule); overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1fr auto; gap: clamp(28px, 7vw, 96px); align-items: center; padding-block: clamp(36px, 6vw, 72px); }
+.hero .text > * { animation: rise 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.hero .text > *:nth-child(2) { animation-delay: 0.12s; }
+.hero .text > *:nth-child(3) { animation-delay: 0.24s; }
+.hero .text > *:nth-child(4) { animation-delay: 0.36s; }
+.hero .text > *:nth-child(5) { animation-delay: 0.48s; }
+.hero .text > *:nth-child(6) { animation-delay: 0.6s; }
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.wordmark { font-family: var(--script); font-weight: 400; font-size: clamp(6rem, 16vw, 11.5rem); line-height: 0.9; margin: 16px 0 0; }
+.by { margin-top: 6px; font-family: var(--display); font-weight: 600; font-size: clamp(1.5rem, 3.4vw, 2.2rem); letter-spacing: 0.5em; color: var(--gold); }
+.intro { margin: 28px 0 0; max-width: 29em; color: var(--muted); }
+.hero .actions { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+.formats { margin-top: 38px; padding-top: 20px; border-top: 1px solid var(--rule); display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px 28px; }
+.formats small { display: block; font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-soft); }
+.formats span { font-family: var(--display); font-size: 1.45rem; font-weight: 500; }
+.still { position: relative; overflow: hidden; width: clamp(320px, 46vw, 580px); aspect-ratio: 1100 / 733; border: 1px solid var(--gold); box-shadow: 0 40px 80px -30px rgba(0,0,0,.8); }
+.still::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(120,60,140,.28), transparent 55%), radial-gradient(ellipse at center, transparent 55%, rgba(18,7,26,.55)); }
+.still img { width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%; animation: pushin 26s ease-in-out infinite alternate; }
+@keyframes pushin { from { transform: scale(1); } to { transform: scale(1.06); } }
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .still { width: min(520px, 100%); justify-self: center; }
+}
+
+/* slogan band */
+.slogan { background-color: var(--bg2); border-bottom: 1px solid var(--rule); text-align: center; padding-block: clamp(48px, 8vw, 96px); }
+.slogan p { margin: 0 auto; max-width: 16em; font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(2rem, 6vw, 4.2rem); line-height: 1.1; text-wrap: balance; }
+.slogan .label { display: block; margin-top: 22px; }
+
+/* products */
+.offer-top { display: grid; grid-template-columns: 1fr; gap: clamp(28px, 6vw, 80px); align-items: start; }
+@media (max-width: 860px) { .offer-top { grid-template-columns: 1fr; } .offer-top .pic { max-width: 100%; } }
+.pic img { width: 100%; max-width: 786px; height: auto; border: 1px solid var(--gold); margin-inline: auto; }
+.note { margin: 0 0 14px; font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-soft); font-weight: 400; }
+.svc { list-style: none; margin: 0; padding: 0; columns: 2 240px; column-gap: 40px; }
+.svc li { break-inside: avoid; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 1.04rem; color: var(--cream); }
+.packages { margin-top: clamp(48px, 7vw, 88px); }
+.packages h3 { font-size: clamp(1.9rem, 4vw, 2.6rem); margin-bottom: 14px; }
+.pkgs { border-top: 1px solid var(--gold); }
+.pkg { display: grid; grid-template-columns: minmax(0, 15em) 1fr auto; gap: 8px 28px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--rule); }
+.pkg h4 { font-size: 1.45rem; }
+.pkg p { margin: 0; color: var(--muted); }
+.pkg a { font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-soft); text-decoration: none; border-bottom: 1px solid var(--gold); font-weight: 400; white-space: nowrap; justify-self: end; }
+.pkg a:hover { color: #fff; border-color: #fff; }
+@media (max-width: 700px) { .pkg { grid-template-columns: 1fr; } .pkg a { justify-self: start; } }
+
+/* consultations */
+.tiers { border-top: 1px solid var(--gold); }
+.tier { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr) auto; gap: 14px 40px; align-items: center; padding: 34px 0; border-bottom: 1px solid var(--rule); }
+.tier h3 { font-size: clamp(1.7rem, 3.2vw, 2.3rem); }
+.dur { display: block; margin-top: 4px; font-size: 0.76rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-soft); font-weight: 400; }
+.tier ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 2px; color: var(--muted); }
+.tier li::before { content: "– "; color: var(--gold); }
+.price { text-align: right; display: grid; gap: 14px; justify-items: end; }
+.price strong { font-family: var(--display); font-size: clamp(2.6rem, 5vw, 3.8rem); font-weight: 600; color: var(--cream); line-height: 1; font-variant-numeric: lining-nums tabular-nums; }
+@media (max-width: 760px) {
+  .tier { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+  .price { grid-auto-flow: column; justify-content: space-between; justify-items: start; align-items: center; text-align: left; }
+}
+
+/* how it works + notes */
+.steps { list-style: none; padding: 0; margin: 0; counter-reset: s; border-top: 1px solid var(--gold); }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 56px 1fr; gap: 14px; padding: 22px 0; border-bottom: 1px solid var(--rule); }
+.steps li::before { content: counter(s); font-family: var(--display); font-size: 2.2rem; font-weight: 500; color: var(--gold); line-height: 1; }
+.steps h4 { font-size: 1.5rem; }
+.steps p { margin: 2px 0 0; color: var(--muted); }
+.notes { margin-top: clamp(44px, 6vw, 72px); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px 40px; }
+.notes div { border-top: 1px solid var(--gold); padding-top: 14px; }
+.notes h4 { font-size: 1.4rem; }
+.notes p { margin: 4px 0 0; color: var(--muted); }
+
+/* booking */
+.book { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
+@media (max-width: 800px) { .book { grid-template-columns: 1fr; } }
+.book .copy { display: grid; gap: 16px; }
+.book .copy > p { margin: 0; color: var(--muted); }
+.contacts { margin-top: 8px; border-top: 1px solid var(--rule); }
+.contact { display: grid; grid-template-columns: 110px 1fr; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--rule); text-decoration: none; word-break: break-word; }
+.contact small { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-soft); }
+.contact span { font-family: var(--display); font-size: 1.4rem; font-weight: 600; }
+a.contact:hover span { color: var(--gold-soft); }
+form { background: var(--cream); color: #2b1c32; padding: clamp(22px, 4vw, 34px); display: grid; gap: 18px; }
+label { display: grid; gap: 6px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: #5b4a64; font-weight: 500; }
+input, select, textarea { font: 400 1rem var(--body); letter-spacing: 0; text-transform: none; color: #2b1c32; background: #fff; border: 1px solid #cdbfa8; border-radius: 0; padding: 12px 13px; width: 100%; min-width: 0; color-scheme: light; }
+textarea { min-height: 84px; resize: vertical; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 480px) { .row { grid-template-columns: 1fr; } }
+.fnote { margin: 0; font-size: 0.85rem; color: #5b4a64; }
+
+
+/* consultant */
+#consultant, #how { border-top: 1px solid var(--rule); }
+.doc { display: grid; grid-template-columns: minmax(0, 420px) 1fr; gap: clamp(28px, 6vw, 80px); align-items: center; }
+.doc .portrait { position: relative; }
+.doc .portrait img { width: 100%; height: auto; border: 1px solid var(--gold); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.8); }
+.doc .portrait::after { content: ""; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid var(--rule); z-index: -1; }
+.doc .info { display: grid; gap: 16px; }
+.doc .info h2 { font-size: clamp(2.6rem, 6vw, 4.2rem); }
+.doc .info p { margin: 0; color: var(--muted); max-width: 30em; }
+.doc .role { font-family: var(--display); font-style: italic; font-size: 1.5rem; color: var(--gold); }
+@media (max-width: 800px) { .doc { grid-template-columns: 1fr; } .doc .portrait { max-width: 400px; margin-right: 14px; } }
+
+
+.float { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 25; display: grid; gap: 10px; }
+.float a { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--gold); color: #1b0a24; border: 1px solid var(--cream); box-shadow: 0 10px 24px rgba(0,0,0,.5); text-decoration: none; }
+.float a:hover { background: var(--cream); }
+.float svg { width: 26px; height: 26px; fill: currentColor; }
+/* end credits */
+footer { border-top: 1px solid var(--rule); text-align: center; padding-block: clamp(56px, 8vw, 96px) calc(40px + env(safe-area-inset-bottom, 0px)); background-color: var(--bg); }
+footer .mark { font-family: var(--script); font-size: clamp(3.4rem, 9vw, 5.5rem); line-height: 1; }
+footer .by2 { font-family: var(--display); letter-spacing: 0.5em; color: var(--gold); font-weight: 600; margin-top: 4px; }
+footer .credits { margin: 36px auto 0; display: grid; gap: 22px; max-width: 30em; }
+footer .credits div small { display: block; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-soft); }
+footer .credits div span { font-family: var(--display); font-size: 1.4rem; font-weight: 500; }
+footer .credits a { text-decoration: none; }
+footer .credits a:hover span { color: var(--gold-soft); }
+footer .end { margin-top: 40px; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.1em; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero .text > *, .still img, .still svg { animation: none; }
+}
+</style>
+<div class="bar">
+<div class="wrap">
+<a aria-label="Aura by Bree, home" class="mark" href="#top">Aura</a>
+<nav>
+<a class="opt" href="#products">Products</a>
+<a class="opt" href="#consultations">Consultations</a>
+<a class="opt" href="#consultant">Consultant</a>
+<a class="book" href="#book">Book</a>
+</nav>
+</div>
+</div>
+<header class="hero" id="top">
+<div class="wrap">
+<div class="text">
+<span class="label">Luxury skincare &amp; beauty · Abuja</span>
+<h1 class="wordmark">Aura</h1>
+<div class="by">BY BREE</div>
+<p class="intro">Helping women glow with simple skincare and beauty tips. Affordable routines, radiant hacks and self-care inspiration.</p>
+<div class="actions">
+<a class="btn btn-solid" href="#book">Book a consultation</a>
+<a class="btn btn-ghost" href="#products">See products</a>
+</div>
+<div class="formats">
+<div><small>Physical consultation</small><span>Abuja only</span></div>
+<div><small>Virtual consultation</small><span>Nationwide</span></div>
+</div>
+</div>
+<div class="still"><img alt="Skincare tubes, dropper serum, bottle and cream jar beside a white vase and a green sprig" decoding="async" fetchpriority="high" height="733" loading="eager" src="hero.jpg" width="1100"/></div>
+</div>
+</header>
+<div class="slogan">
+<div class="wrap">
+<p>Because your aura deserves to glow.</p>
+<span class="label">Luxury skincare &amp; beauty</span>
+</div>
+</div>
+<section class="block" id="products">
+<div class="wrap">
+<div class="head">
+<span class="label">Products &amp; services</span>
+<h2>Skincare that fits your routine</h2>
+</div>
+<div class="offer-top">
+<div class="pic"><img alt="Skincare bottles, a tube and a jar on a marble tray" decoding="async" height="390" loading="lazy" src="tray.jpg" width="786"/></div>
+<div>
+<p class="note">Dermatologically informed · Science-based · Non-organic</p>
+<ul class="svc">
+<li>Body and glow moisturizers</li>
+<li>Hyperpigmentation therapy</li>
+<li>Dark spot &amp; acne treatments</li>
+<li>Exfoliating scrubs (AHA/BHA based)</li>
+<li>Brightening creams &amp; serums</li>
+<li>Teen-friendly skincare options</li>
+<li>Men's grooming essentials</li>
+<li>Hair &amp; beard care oils</li>
+<li>Gentle cleansers &amp; toners</li>
+<li>Professional skin consultation</li>
+<li>Customized skincare routines</li>
+</ul>
+</div>
+</div>
+<div class="packages">
+<h3>Combo packages</h3>
+<div class="pkgs">
+<div class="pkg">
+<h4>Glow Starter Package</h4>
+<p>Cleanser, toner, serum, moisturizer, sunscreen</p>
+<a data-go="wa" href="https://wa.me/2348104167780?text=Hello%20Aura%20by%20Bree%2C%20I%27d%20like%20to%20know%20the%20price%20of%20the%20Glow%20Starter%20Package." rel="noopener noreferrer" target="_blank">Ask for price</a>
+</div>
+<div class="pkg">
+<h4>Brighten &amp; Even Package</h4>
+<p>Brightening serum, dark spot cream, exfoliating scrub, sunscreen</p>
+<a data-go="wa" href="https://wa.me/2348104167780?text=Hello%20Aura%20by%20Bree%2C%20I%27d%20like%20to%20know%20the%20price%20of%20the%20Brighten%20%26%20Even%20Package." rel="noopener noreferrer" target="_blank">Ask for price</a>
+</div>
+<div class="pkg">
+<h4>Clear Skin Package</h4>
+<p>Acne treatment, clarifying cleanser, toner, serum, moisturizer</p>
+<a data-go="wa" href="https://wa.me/2348104167780?text=Hello%20Aura%20by%20Bree%2C%20I%27d%20like%20to%20know%20the%20price%20of%20the%20Clear%20Skin%20Package." rel="noopener noreferrer" target="_blank">Ask for price</a>
+</div>
+<div class="pkg">
+<h4>Body Glow Package</h4>
+<p>Glow scrub, body milk, glow oil, sunscreen</p>
+<a data-go="wa" href="https://wa.me/2348104167780?text=Hello%20Aura%20by%20Bree%2C%20I%27d%20like%20to%20know%20the%20price%20of%20the%20Body%20Glow%20Package." rel="noopener noreferrer" target="_blank">Ask for price</a>
+</div>
+<div class="pkg">
+<h4>The Ultimate Self-Care Package</h4>
+<p>Full skincare routine, body care, hair &amp; beard oil, surprise gift</p>
+<a data-go="wa" href="https://wa.me/2348104167780?text=Hello%20Aura%20by%20Bree%2C%20I%27d%20like%20to%20know%20the%20price%20of%20The%20Ultimate%20Self-Care%20Package." rel="noopener noreferrer" target="_blank">Ask for price</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="block alt" id="consultations">
+<div class="wrap">
+<div class="head">
+<span class="label">Skincare consultation</span>
+<h2>Price list</h2>
+<p>Pick the session that fits where your skin is today. Every consultation ends with clear steps you can follow.</p>
+</div>
+<div class="tiers">
+<article class="tier">
+<div><h3>Basic consultation</h3><span class="dur">15 – 20 minutes</span></div>
+<ul><li>Skin type assessment</li><li>Major skin concerns</li><li>Basic product recommendations</li></ul>
+<div class="price"><strong>₦3,000</strong><a class="btn btn-ghost btn-small" data-pick="Basic Consultation" href="#book">Book</a></div>
+</article>
+<article class="tier">
+<div><h3>Standard consultation</h3><span class="dur">30 – 40 minutes</span></div>
+<ul><li>Detailed skin analysis</li><li>Customized routine (AM &amp; PM)</li><li>Product &amp; lifestyle guidance</li></ul>
+<div class="price"><strong>₦7,000</strong><a class="btn btn-ghost btn-small" data-pick="Standard Consultation" href="#book">Book</a></div>
+</article>
+<article class="tier">
+<div><h3>Premium skin reset</h3><span class="dur">45 – 60 minutes</span></div>
+<ul><li>In-depth skin assessment</li><li>Personalized routine</li><li>Targeted solutions</li><li>7-day follow-up support</li></ul>
+<div class="price"><strong>₦12,000</strong><a class="btn btn-solid btn-small" data-pick="Premium Skin Reset" href="#book">Book</a></div>
+</article>
+</div>
+</div>
+</section>
+<section class="block" id="consultant">
+<div class="wrap doc">
+<div class="portrait"><img alt="Portrait of Dr Brenda Ngowari in a magenta dress with feathered cuffs" decoding="async" height="869" loading="lazy" src="dr.jpg" width="900"/></div>
+<div class="info">
+<span class="label">Meet your consultant</span>
+<h2>Dr Brenda Ngowari</h2>
+<div class="role">Skincare consultant, Aura by Bree</div>
+<p>Every Aura consultation is led by Dr Ngowari, who brings a dermatologically informed, science-based approach to your skin assessment and your routine.</p>
+<div class="actions"><a class="btn btn-solid" href="#book">Book a consultation</a></div>
+</div>
+</div>
+</section>
+<section class="block" id="how">
+<div class="wrap">
+<div class="head">
+<span class="label">Your session</span>
+<h2>How a consultation works</h2>
+</div>
+<ol class="steps">
+<li><div><h4>Choose your consultation</h4><p>Basic, Standard or Premium, in person in Abuja or virtual from anywhere in Nigeria.</p></div></li>
+<li><div><h4>Skin assessment</h4><p>Your skin type and main concerns, from a quick check to an in-depth review.</p></div></li>
+<li><div><h4>Your routine and products</h4><p>A customized AM and PM routine with product and lifestyle guidance.</p></div></li>
+<li><div><h4>Follow-up</h4><p>The Premium Skin Reset includes 7 days of follow-up support.</p></div></li>
+</ol>
+<div class="notes">
+<div><h4>Fee credited to products</h4><p>Your consultation fee is discounted when you buy products from the brand.</p></div>
+<div><h4>Be on time</h4><p>Sessions run to time, so punctuality is required.</p></div>
+<div><h4>Consistency is key</h4><p>Good skin comes from following your routine day after day.</p></div>
+</div>
+</div>
+</section>
+<section class="block alt" id="book">
+<div class="wrap book">
+<div class="copy">
+<span class="label">Book</span>
+<h2>Let's get your skin glowing</h2>
+<p>Choose a consultation or a combo package and tell Bree how you'd like to meet. Your details open as a ready-to-send WhatsApp message, so you can confirm a time and price directly.</p>
+<div class="contacts">
+<a class="contact" data-go="wa" href="https://wa.me/2348104167780" rel="noopener noreferrer" target="_blank"><small>WhatsApp</small><span>08104167780</span></a>
+<a class="contact" data-go="mail" href="mailto:aurabybree5@gmail.com?subject=Enquiry%20for%20Aura%20by%20Bree&amp;body=Hello%20Aura%20by%20Bree%2C%0A%0A" target="_blank"><small>Email</small><span>aurabybree5@gmail.com</span></a>
+<a class="contact" data-go="ig" href="https://www.instagram.com/aura_by_bree5/" rel="noopener noreferrer" target="_blank"><small>Instagram</small><span>aura_by_bree5</span></a>
+<div class="contact"><small>Location</small><span>Gwagwalada, Abuja</span></div>
+</div>
+</div>
+<form autocomplete="off" id="bookingForm">
+<label for="name">Your name
+        <input id="name" placeholder="e.g. Adaeze" type="text"/>
+</label>
+<label for="tier">I'm interested in
+        <select id="tier">
+<optgroup label="Consultations">
+<option value="Basic Consultation (₦3,000)">Basic Consultation · ₦3,000</option>
+<option value="Standard Consultation (₦7,000)">Standard Consultation · ₦7,000</option>
+<option value="Premium Skin Reset (₦12,000)">Premium Skin Reset · ₦12,000</option>
+</optgroup>
+<optgroup label="Combo packages">
+<option value="Glow Starter Package">Glow Starter Package</option>
+<option value="Brighten &amp; Even Package">Brighten &amp; Even Package</option>
+<option value="Clear Skin Package">Clear Skin Package</option>
+<option value="Body Glow Package">Body Glow Package</option>
+<option value="The Ultimate Self-Care Package">The Ultimate Self-Care Package</option>
+</optgroup>
+</select>
+</label>
+<div class="row">
+<label for="mode">Format
+          <select id="mode">
+<option value="Physical (Abuja)">Physical · Abuja</option>
+<option value="Virtual">Virtual · Nationwide</option>
+</select>
+</label>
+<label for="when">Preferred day / time
+          <input id="when" placeholder="e.g. Saturday afternoon" type="text"/>
+</label>
+</div>
+<label for="concern">Main skin concern
+        <textarea id="concern" placeholder="Acne, dark spots, dryness..."></textarea>
+</label>
+<a class="btn btn-solid" data-go="wa" href="https://wa.me/2348104167780" id="wa" rel="noopener noreferrer" target="_blank">Send on WhatsApp</a>
+<p class="fnote">This opens WhatsApp with your message filled in. Nothing is sent until you press send there.</p>
+</form>
+</div>
+</section>
+<div aria-label="Contact Aura by Bree" class="float">
+<a aria-label="Chat on WhatsApp" data-go="wa" href="https://wa.me/2348104167780?text=Hello%20Aura%20by%20Bree%2C%20I%27d%20like%20to%20make%20an%20enquiry." rel="noopener noreferrer" target="_blank"><svg viewbox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.1.1.7-.1 1.4Z"></path></svg></a>
+<a aria-label="Instagram" data-go="ig" href="https://www.instagram.com/aura_by_bree5/" rel="noopener noreferrer" target="_blank"><svg viewbox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.2-3.2a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z"></path></svg></a>
+<a aria-label="Email" data-go="mail" href="mailto:aurabybree5@gmail.com?subject=Enquiry%20for%20Aura%20by%20Bree&amp;body=Hello%20Aura%20by%20Bree%2C%0A%0A" target="_blank"><svg viewbox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 7.2L4.5 7v1.4L12 13.6l7.5-5.2V7L12 12.2Z"></path></svg></a>
+</div>
+<footer>
+<div class="wrap">
+<div class="mark">Aura</div>
+<div class="by2">BY BREE</div>
+<div class="credits">
+<a data-go="wa" href="https://wa.me/2348104167780" rel="noopener noreferrer" target="_blank"><div><small>WhatsApp</small><span>08104167780</span></div></a>
+<a data-go="mail" href="mailto:aurabybree5@gmail.com?subject=Enquiry%20for%20Aura%20by%20Bree&amp;body=Hello%20Aura%20by%20Bree%2C%0A%0A" target="_blank"><div><small>Email</small><span>aurabybree5@gmail.com</span></div></a>
+<a data-go="ig" href="https://www.instagram.com/aura_by_bree5/" rel="noopener noreferrer" target="_blank"><div><small>Instagram</small><span>@aura_by_bree5</span></div></a>
+<div><small>Studio</small><span>Gwagwalada, Abuja</span></div>
+</div>
+<p class="end">Because your aura deserves to glow.</p>
+</div>
+</footer>
+<script>
+(function () {
+  var f = document.getElementById('bookingForm');
+  var wa = document.getElementById('wa');
+  var els = { name: f.querySelector('#name'), tier: f.querySelector('#tier'), mode: f.querySelector('#mode'), when: f.querySelector('#when'), concern: f.querySelector('#concern') };
+  function build() {
+    var lines = ['Hello Aura by Bree, I would like to book / enquire.'];
+    if (els.name.value.trim()) lines.push('Name: ' + els.name.value.trim());
+    lines.push('Interested in: ' + els.tier.value);
+    lines.push('Format: ' + els.mode.value);
+    if (els.when.value.trim()) lines.push('Preferred time: ' + els.when.value.trim());
+    if (els.concern.value.trim()) lines.push('Main concern: ' + els.concern.value.trim());
+    wa.href = 'https://wa.me/2348104167780?text=' + encodeURIComponent(lines.join('\n'));
+  }
+  f.addEventListener('input', build);
+  f.addEventListener('change', build);
+  f.addEventListener('submit', function (e) { e.preventDefault(); });
+  document.querySelectorAll('[data-pick]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var pick = a.getAttribute('data-pick');
+      for (var i = 0; i < els.tier.options.length; i++) {
+        if (els.tier.options[i].value.indexOf(pick) === 0) { els.tier.selectedIndex = i; break; }
+      }
+      build();
+    });
+  });
+  build();
+})();
+
+</script>
